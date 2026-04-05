@@ -677,6 +677,7 @@ public class vista extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         btnControl1.setText("numero 1");
+        btnControl1.addActionListener(this::btnControl1ActionPerformed);
 
         btnControl2.setText("numero 2");
 
@@ -814,7 +815,7 @@ public class vista extends javax.swing.JFrame {
     private void btnVehiculoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoGuardarActionPerformed
         // TODO add your handling code here:
         
-        if (inputVehiculoPlaca.getText().isEmpty() || inputVehiculoCilindraje.getText().isEmpty() || inputVehiculoMarca.getText().isEmpty() || inputVehiculoModelo.getText().isEmpty()){
+        if (inputVehiculoPlaca.getText().isEmpty() || inputVehiculoCilindraje.getText().isEmpty() || inputVehiculoMarca.getText().isEmpty() || inputVehiculoModelo.getText().isEmpty() || inputComboVehiculoIdPropietario.getSelectedIndex() == -1){
                 JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else{
         
@@ -916,8 +917,8 @@ public class vista extends javax.swing.JFrame {
     private void btnMantenimientoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMantenimientoGuardarActionPerformed
         // TODO add your handling code here:
         
-        if (inputMantenimientoFecha.getText().isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "Debe llenar el campo fecha");
+        if (inputMantenimientoFecha.getText().isEmpty() || inputComboMantenimientoIdServicio.getSelectedIndex() == -1 || inputComboMantenimientoPlacaVehiculo.getSelectedIndex() == -1){
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else{
             if (posicionMantenimientoParalela >= tamMantenimientoMaximo){
                 JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array mantenimiento");
@@ -971,7 +972,8 @@ public class vista extends javax.swing.JFrame {
                         break;
                 }
                 
-                manipulador.setDatosMantenimientos(posicionMantenimientoParalela, placaVehiculo, idServicio, idServicio);
+                String fecha = inputMantenimientoFecha.getText();
+                manipulador.setDatosMantenimientos(posicionMantenimientoParalela, placaVehiculo, idServicio, fecha);
                 
                 posicionMantenimientoParalela++;
                 JOptionPane.showMessageDialog(rootPane, "Mantenimiento ingresado exitosamente");
@@ -985,6 +987,19 @@ public class vista extends javax.swing.JFrame {
         inputMantenimientoFecha.setText("");
         
     }//GEN-LAST:event_btnMantenimientoLimpiarActionPerformed
+
+    int  posicion1Paralela = 0;
+    
+    private void btnControl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl1ActionPerformed
+        // TODO add your handling code here:
+        
+//        System.out.println(manipulador.pruebaDatosMantenimiento(posicion1Paralela));
+        
+        String fecha = manipulador.getFechaMantenimiento(posicion1Paralela);
+        System.out.println(manipulador.consultarPlacaMantenimiento(fecha));
+        
+        posicion1Paralela++;
+    }//GEN-LAST:event_btnControl1ActionPerformed
 
     /**
      * @param args the command line arguments

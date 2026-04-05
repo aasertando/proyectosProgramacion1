@@ -46,14 +46,18 @@ public class manipulador {
         return vehiculo.getPlacaVehiculo(pos);
     }
     
-    public String pruebaDatosCliente(int pos){
+    public String getFechaMantenimiento(int pos){
+        return mantenimiento.getFechaMantenimiento(pos);
+    }
     
-        String [] datos = new String[5];
+    public String pruebaDatosMantenimiento(int pos){
+    
+        String [] datos = new String[3];
         
-        datos [0] = cliente.getDireccionCliente(pos-1);
-        datos [1] = cliente.getIdCliente(pos-1);
-        datos [2] = cliente.getNombreCliente(pos-1);
-        datos [3] = cliente.getTelefonoCliente(pos-1);
+        datos [0] = mantenimiento.getFechaMantenimiento(pos);
+        datos [1] = mantenimiento.getIdServicioMantenimiento(pos);
+        datos [2] = mantenimiento.getPlacaMantenimiento(pos);
+//        datos [3] = cliente.getTelefonoCliente(pos-1);
         
         return Arrays.toString(datos);
     }
@@ -64,7 +68,7 @@ public class manipulador {
         int indexDeConcordados = 0;
         
         for (int i = 0; i < mantenimiento.getTamMantenimiento(); i++) {
-            if(mantenimiento.getFechaMantenimiento(i).equals(fecha)){
+            if(mantenimiento.getFechaMantenimiento(i) != null && mantenimiento.getFechaMantenimiento(i).equals(fecha)){
                  concordados [indexDeConcordados] = mantenimiento.getPlacaMantenimiento(i);
                  indexDeConcordados++;
             }
