@@ -997,6 +997,7 @@ public class vista extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMantenimientoLimpiarActionPerformed
     
     //CONTROLADOR
+    //1. en una fecha dada a que vehiculos se les hizo mantenimiento
     private void btnControl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl1ActionPerformed
         // TODO add your handling code here:
 
