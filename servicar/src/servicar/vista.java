@@ -555,9 +555,11 @@ public class vista extends javax.swing.JFrame {
 
         btnMantenimientoGuardar.setFont(new java.awt.Font("Ubuntu Sans", 1, 18)); // NOI18N
         btnMantenimientoGuardar.setText("Guardar");
+        btnMantenimientoGuardar.addActionListener(this::btnMantenimientoGuardarActionPerformed);
 
         btnMantenimientoLimpiar.setFont(new java.awt.Font("Ubuntu Sans", 1, 18)); // NOI18N
         btnMantenimientoLimpiar.setText("Limpiar");
+        btnMantenimientoLimpiar.addActionListener(this::btnMantenimientoLimpiarActionPerformed);
 
         inputComboMantenimientoPlacaVehiculo.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
 
@@ -907,6 +909,82 @@ public class vista extends javax.swing.JFrame {
         inputServiciosValor.setText("");
         
     }//GEN-LAST:event_btnServiciosLimpiarActionPerformed
+
+    int posicionMantenimientoParalela = 0;
+    int tamMantenimientoMaximo = mantenimiento.getTamMantenimiento();
+    
+    private void btnMantenimientoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMantenimientoGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        if (inputMantenimientoFecha.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar el campo fecha");
+        } else{
+            if (posicionMantenimientoParalela >= tamMantenimientoMaximo){
+                JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array mantenimiento");
+            } else{
+                
+                //tomar dato comboboxPlaca
+                int indexPlacaVehiculo = 0;
+                String placaVehiculo = "";
+                
+                indexPlacaVehiculo = inputComboMantenimientoPlacaVehiculo.getSelectedIndex();
+                
+                switch (indexPlacaVehiculo){
+                    case 0:
+                        placaVehiculo = manipulador.getPlacaVehiculo(0);
+                        break;
+                    case 1:
+                        placaVehiculo = manipulador.getPlacaVehiculo(1);
+                        break;
+                    case 2:
+                        placaVehiculo = manipulador.getPlacaVehiculo(2);
+                        break;
+                    case 3:
+                        placaVehiculo = manipulador.getPlacaVehiculo(3);
+                        break;
+                    case 4:
+                        placaVehiculo = manipulador.getPlacaVehiculo(4);
+                        break;
+                }
+                
+                //tomar dato comboboxIDSerivicio
+                int indexIdServicio = 0;
+                String idServicio = "";
+                
+                indexIdServicio = inputComboMantenimientoIdServicio.getSelectedIndex();
+                
+                switch (indexIdServicio){
+                    case 0:
+                        idServicio = manipulador.getIdServicio(0);
+                        break;
+                    case 1:
+                        idServicio = manipulador.getIdServicio(1);
+                        break;
+                    case 2:
+                        idServicio = manipulador.getIdServicio(2);
+                        break;
+                    case 3:
+                        idServicio = manipulador.getIdServicio(3);
+                        break;
+                    case 4:
+                        idServicio = manipulador.getIdServicio(4);
+                        break;
+                }
+                
+                manipulador.setDatosMantenimientos(posicionMantenimientoParalela, placaVehiculo, idServicio, idServicio);
+                
+                posicionMantenimientoParalela++;
+                JOptionPane.showMessageDialog(rootPane, "Mantenimiento ingresado exitosamente");
+            }
+        }
+    }//GEN-LAST:event_btnMantenimientoGuardarActionPerformed
+
+    private void btnMantenimientoLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMantenimientoLimpiarActionPerformed
+        // TODO add your handling code here:
+        
+        inputMantenimientoFecha.setText("");
+        
+    }//GEN-LAST:event_btnMantenimientoLimpiarActionPerformed
 
     /**
      * @param args the command line arguments

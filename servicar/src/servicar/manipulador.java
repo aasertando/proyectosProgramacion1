@@ -30,8 +30,20 @@ public class manipulador {
         servicios.setDatos(pos, id, descripcion, valor);
     }
     
+    public void setDatosMantenimientos(int pos, String placa, String idServicio, String fecha){
+        mantenimiento.setDatos(pos, placa, idServicio, fecha);
+    }
+    
     public String getIdCliente(int pos){
         return cliente.getIdCliente(pos);
+    }
+    
+    public String getIdServicio(int pos){
+        return servicios.getIdServicio(pos);
+    }
+    
+    public String getPlacaVehiculo(int pos){
+        return vehiculo.getPlacaVehiculo(pos);
     }
     
     public String pruebaDatosCliente(int pos){
