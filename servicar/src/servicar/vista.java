@@ -991,15 +991,12 @@ public class vista extends javax.swing.JFrame {
         inputMantenimientoFecha.setText("");
         
     }//GEN-LAST:event_btnMantenimientoLimpiarActionPerformed
-
-    int  posicion1Paralela = 0;
     
     private void btnControl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl1ActionPerformed
         // TODO add your handling code here:
 
         String fecha = JOptionPane.showInputDialog("Ingrese fecha para buscar");
         String [] placas = manipulador.consultarPlacaMantenimiento(fecha);
-        posicion1Paralela++;
         
         String [] columnas1 = {"Fecha", "placa", "idPropietario", "Modelo", "Marca", "Cilindraje"};
         modeloTabla.setColumnIdentifiers(columnas1);
