@@ -63,17 +63,34 @@ public class manipulador {
     }
     
     //en una fecha dada a que vehiculos se les hizo mantenimiento
-    public String consultarPlacaMantenimiento(String fecha){
-        String[] concordados = new String[5];
-        int indexDeConcordados = 0;
+    public String [] consultarPlacaMantenimiento(String fecha){
+        
+        String[] datos = new String[6];
+        String idPropietario;
+        String marca;
+        String modelo;
+        String cilindraje;
+        String placa;
         
         for (int i = 0; i < mantenimiento.getTamMantenimiento(); i++) {
             if(mantenimiento.getFechaMantenimiento(i) != null && mantenimiento.getFechaMantenimiento(i).equals(fecha)){
-                 concordados [indexDeConcordados] = mantenimiento.getPlacaMantenimiento(i);
-                 indexDeConcordados++;
+                 
+                 placa = mantenimiento.getPlacaMantenimiento(i);
+                 idPropietario = cliente.getIdCliente(i);
+                 marca = vehiculo.getMarcaVehiculo(i);
+                 modelo = vehiculo.getModeloVehiculo(i);
+                 cilindraje = vehiculo.getCilindrajeVehiculo(i);
+                 
+                 datos [0] = fecha;
+                 datos [1] = placa;
+                 datos [2] = idPropietario;
+                 datos [3] = marca;
+                 datos [4] = modelo;
+                 datos [5] = cilindraje;
+                 
             }
         }
-        return Arrays.toString(concordados);
+        return datos;
     }
     
     //Cuál es el costo total de mantenimientos en una fecha dada 

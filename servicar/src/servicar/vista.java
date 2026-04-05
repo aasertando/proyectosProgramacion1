@@ -5,6 +5,7 @@
 package servicar;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +19,8 @@ public class vista extends javax.swing.JFrame {
     mantenimiento mantenimiento = new mantenimiento(5);
     manipulador manipulador = new manipulador();
     
+    DefaultTableModel modeloTabla = new DefaultTableModel();
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vista.class.getName());
 
     /**
@@ -25,6 +28,7 @@ public class vista extends javax.swing.JFrame {
      */
     public vista() {
         initComponents();
+        jTable1.setModel(modeloTabla);
     }
 
     /**
@@ -992,13 +996,15 @@ public class vista extends javax.swing.JFrame {
     
     private void btnControl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl1ActionPerformed
         // TODO add your handling code here:
-        
-//        System.out.println(manipulador.pruebaDatosMantenimiento(posicion1Paralela));
-        
-        String fecha = manipulador.getFechaMantenimiento(posicion1Paralela);
-        System.out.println(manipulador.consultarPlacaMantenimiento(fecha));
-        
+
+        String fecha = JOptionPane.showInputDialog("Ingrese fecha para buscar");
+        String [] placas = manipulador.consultarPlacaMantenimiento(fecha);
         posicion1Paralela++;
+        
+        String [] columnas1 = {"Fecha", "placa", "idPropietario", "Modelo", "Marca", "Cilindraje"};
+        modeloTabla.setColumnIdentifiers(columnas1);
+        modeloTabla.addRow(placas);
+        
     }//GEN-LAST:event_btnControl1ActionPerformed
 
     /**
