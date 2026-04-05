@@ -12,13 +12,26 @@ import java.util.Arrays;
  * @author aser
  */
 public class manipulador {
-        cliente cliente = new cliente(5);
-        vehiculo vehiculo = new vehiculo(5);
-        servicios servicios = new servicios(5);
-        mantenimiento mantenimiento = new mantenimiento(5);
+
+    cliente cliente = new cliente(5);
+    vehiculo vehiculo = new vehiculo(5);
+    servicios servicios = new servicios(5);
+    mantenimiento mantenimiento = new mantenimiento(5);
     
-    //constructor en donde se hacen las intancias
-    public manipulador(){
+    public void setDatosClientes(int pos, String id, String nombre, String direccion, String telefono ){
+        cliente.setDatos(pos, id, nombre, direccion, telefono);
+    }
+    
+    public String pruebaDatosCliente(int pos){
+    
+        String [] datos = new String[5];
+        
+        datos [0] = cliente.getDireccionCliente(pos-1);
+        datos [1] = cliente.getIdCliente(pos-1);
+        datos [2] = cliente.getNombreCliente(pos-1);
+        datos [3] = cliente.getTelefonoCliente(pos-1);
+        
+        return Arrays.toString(datos);
     }
     
     //en una fecha dada a que vehiculos se les hizo mantenimiento

@@ -4,11 +4,19 @@
  */
 package servicar;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aser
  */
 public class vista extends javax.swing.JFrame {
+    
+    cliente cliente = new cliente(5);
+    vehiculo vehiculo = new vehiculo(5);
+    servicios servicios = new servicios(5);
+    mantenimiento mantenimiento = new mantenimiento(5);
+    manipulador manipulador = new manipulador();
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(vista.class.getName());
 
@@ -759,16 +767,28 @@ public class vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    int posicionClienteParalela = 0;
+    int tamClienteMaximo = cliente.getTamClientes();
+    
     private void btnClienteGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteGuardarActionPerformed
         // TODO add your handling code here:
         
+        if (posicionClienteParalela >= tamClienteMaximo){
+            JOptionPane.showMessageDialog(rootPane, "no hay espacio disponible en el array cliente");
+        } else{
+            
         String clienteNombre = inputClienteNombre.getText();
         String clienteId = inputClienteId.getText();
         String clienteDireccion = inputClienteDireccion.getText();
         String clienteTelefono = inputClienteTelefono.getText();
         
+        manipulador.setDatosClientes(posicionClienteParalela, clienteId, clienteNombre, clienteDireccion, clienteTelefono);
+        posicionClienteParalela ++;
         
+        System.out.println("posicion cliente actual: " + posicionClienteParalela);
+        System.out.println(manipulador.pruebaDatosCliente(posicionClienteParalela));
         
+        }
     }//GEN-LAST:event_btnClienteGuardarActionPerformed
 
     private void btnClienteLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteLimpiarActionPerformed
