@@ -18,8 +18,16 @@ public class manipulador {
     servicios servicios = new servicios(5);
     mantenimiento mantenimiento = new mantenimiento(5);
     
-    public void setDatosClientes(int pos, String id, String nombre, String direccion, String telefono ){
+    public void setDatosClientes(int pos, String id, String nombre, String direccion, String telefono){
         cliente.setDatos(pos, id, nombre, direccion, telefono);
+    }
+    
+    public void setDatosVehiculos(int pos, String placa, String cilindraje, String marca, String modelo, String idPropietario){
+        vehiculo.setDatos(pos, placa, cilindraje, marca, modelo, idPropietario);
+    }
+    
+    public String getIdCliente(int pos){
+        return cliente.getIdCliente(pos);
     }
     
     public String pruebaDatosCliente(int pos){

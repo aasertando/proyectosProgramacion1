@@ -288,12 +288,13 @@ public class vista extends javax.swing.JFrame {
 
         btnVehiculoGuardar.setFont(new java.awt.Font("Ubuntu Sans", 1, 18)); // NOI18N
         btnVehiculoGuardar.setText("Guardar");
+        btnVehiculoGuardar.addActionListener(this::btnVehiculoGuardarActionPerformed);
 
         btnVehiculoLimpiar.setFont(new java.awt.Font("Ubuntu Sans", 1, 18)); // NOI18N
         btnVehiculoLimpiar.setText("Limpiar");
+        btnVehiculoLimpiar.addActionListener(this::btnVehiculoLimpiarActionPerformed);
 
         inputComboVehiculoIdPropietario.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
-        inputComboVehiculoIdPropietario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txt9.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
         txt9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -773,21 +774,26 @@ public class vista extends javax.swing.JFrame {
     private void btnClienteGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteGuardarActionPerformed
         // TODO add your handling code here:
         
-        if (posicionClienteParalela >= tamClienteMaximo){
-            JOptionPane.showMessageDialog(rootPane, "no hay espacio disponible en el array cliente");
+        if (inputClienteNombre.getText().isEmpty() || inputClienteId.getText().isEmpty() || inputClienteDireccion.getText().isEmpty() || inputClienteTelefono.getText().isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
         } else{
+            if (posicionClienteParalela >= tamClienteMaximo){
+                JOptionPane.showMessageDialog(rootPane, "no hay espacio disponible en el array cliente");
+            } else{
             
-        String clienteNombre = inputClienteNombre.getText();
-        String clienteId = inputClienteId.getText();
-        String clienteDireccion = inputClienteDireccion.getText();
-        String clienteTelefono = inputClienteTelefono.getText();
+                String clienteNombre = inputClienteNombre.getText();
+                String clienteId = inputClienteId.getText();
+                String clienteDireccion = inputClienteDireccion.getText();
+                String clienteTelefono = inputClienteTelefono.getText();
         
-        manipulador.setDatosClientes(posicionClienteParalela, clienteId, clienteNombre, clienteDireccion, clienteTelefono);
-        posicionClienteParalela ++;
+                manipulador.setDatosClientes(posicionClienteParalela, clienteId, clienteNombre, clienteDireccion, clienteTelefono);
+                posicionClienteParalela ++;
         
-        System.out.println("posicion cliente actual: " + posicionClienteParalela);
-        System.out.println(manipulador.pruebaDatosCliente(posicionClienteParalela));
-        
+//              System.out.println("posicion cliente actual: " + posicionClienteParalela);
+//              System.out.println(manipulador.pruebaDatosCliente(posicionClienteParalela));
+
+                inputComboVehiculoIdPropietario.addItem(clienteId);
+            }
         }
     }//GEN-LAST:event_btnClienteGuardarActionPerformed
 
@@ -798,6 +804,64 @@ public class vista extends javax.swing.JFrame {
         inputClienteDireccion.setText("");
         inputClienteTelefono.setText("");
     }//GEN-LAST:event_btnClienteLimpiarActionPerformed
+
+    int posicionVehiculoParalela = 0;
+    int tamVehiculoMaximo = vehiculo.getNroVehiculos();
+    
+    private void btnVehiculoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        if (inputVehiculoPlaca.getText().isEmpty() || inputVehiculoCilindraje.getText().isEmpty() || inputVehiculoMarca.getText().isEmpty() || inputVehiculoModelo.getText().isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
+        } else{
+        
+        if (posicionVehiculoParalela >= tamVehiculoMaximo){
+            JOptionPane.showMessageDialog(rootPane, "no hay espacio disponible en el array vehiculo");
+        } else {
+            
+            String vehiculoPlaca = inputVehiculoPlaca.getText();
+            String vehiculoCilindraje = inputVehiculoCilindraje.getText();
+            String vehiculoMarca = inputVehiculoMarca.getText();
+            String vehiculoModelo = inputVehiculoModelo.getText();
+            
+            int indexIdPropietario = inputComboVehiculoIdPropietario.getSelectedIndex();
+            String idPropietario;
+            
+            switch (indexIdPropietario) {
+                case 0:
+                    idPropietario = manipulador.getIdCliente(0);
+                    break;
+                case 1:
+                    idPropietario = manipulador.getIdCliente(1);
+                    break;
+                case 2:
+                    idPropietario = manipulador.getIdCliente(2);
+                    break;
+                case 3:
+                    idPropietario = manipulador.getIdCliente(3);
+                    break;
+                case 4:
+                    idPropietario = manipulador.getIdCliente(4);
+                    break;
+                default:
+                    idPropietario = "";
+                    break;
+            }
+            
+            manipulador.setDatosVehiculos(posicionVehiculoParalela, vehiculoPlaca, vehiculoCilindraje, vehiculoMarca, vehiculoModelo, idPropietario);
+            posicionVehiculoParalela++;
+        }
+        }
+    }//GEN-LAST:event_btnVehiculoGuardarActionPerformed
+
+    private void btnVehiculoLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoLimpiarActionPerformed
+        // TODO add your handling code here:
+        
+        inputVehiculoPlaca.setText("");
+        inputVehiculoCilindraje.setText("");
+        inputVehiculoMarca.setText("");
+        inputVehiculoModelo.setText("");
+    }//GEN-LAST:event_btnVehiculoLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
