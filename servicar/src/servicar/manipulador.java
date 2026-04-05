@@ -24,7 +24,7 @@ public class manipulador {
     //en una fecha dada a que vehiculos se les hizo mantenimiento
     public String consultarPlacaMantenimiento(String fecha){
         String[] concordados = new String[5];
-        int indexDeConcordados = -1;
+        int indexDeConcordados = 0;
         
         for (int i = 0; i < mantenimiento.getTamMantenimiento(); i++) {
             if(mantenimiento.getFechaMantenimiento(i).equals(fecha)){
@@ -54,7 +54,7 @@ public class manipulador {
             
         }
         
-        return 67;
+        return 7;
     }
     
 }
