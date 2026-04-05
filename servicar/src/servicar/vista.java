@@ -775,6 +775,7 @@ public class vista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //CLIENTE
     int posicionClienteParalela = 0;
     int tamClienteMaximo = cliente.getTamClientes();
     
@@ -813,6 +814,7 @@ public class vista extends javax.swing.JFrame {
         inputClienteTelefono.setText("");
     }//GEN-LAST:event_btnClienteLimpiarActionPerformed
 
+    //VEHICULO
     int posicionVehiculoParalela = 0;
     int tamVehiculoMaximo = vehiculo.getNroVehiculos();
     
@@ -875,6 +877,7 @@ public class vista extends javax.swing.JFrame {
         inputVehiculoModelo.setText("");
     }//GEN-LAST:event_btnVehiculoLimpiarActionPerformed
 
+    //SERVICIO
     int idServicio = 0;
     int posicionServicioParalela = 0;
     int tamServicioMaximo = servicios.getTamServicio();
@@ -915,6 +918,7 @@ public class vista extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnServiciosLimpiarActionPerformed
 
+    //MANTENIMIENTO
     int posicionMantenimientoParalela = 0;
     int tamMantenimientoMaximo = mantenimiento.getTamMantenimiento();
     
@@ -992,6 +996,7 @@ public class vista extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnMantenimientoLimpiarActionPerformed
     
+    //CONTROLADOR
     private void btnControl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl1ActionPerformed
         // TODO add your handling code here:
 
