@@ -26,6 +26,10 @@ public class manipulador {
         vehiculo.setDatos(pos, placa, cilindraje, marca, modelo, idPropietario);
     }
     
+    public void setDatosServicios(int pos, String id, String descripcion, int valor){
+        servicios.setDatos(pos, id, descripcion, valor);
+    }
+    
     public String getIdCliente(int pos){
         return cliente.getIdCliente(pos);
     }

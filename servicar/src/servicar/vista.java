@@ -428,7 +428,7 @@ public class vista extends javax.swing.JFrame {
 
         txt14.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
         txt14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txt14.setText("ID del servicio (automatico)");
+        txt14.setText("ID del servicio (automático)");
 
         outputServiciosId.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
         outputServiciosId.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -452,9 +452,11 @@ public class vista extends javax.swing.JFrame {
 
         btnServiciosGuardar.setFont(new java.awt.Font("Ubuntu Sans", 1, 18)); // NOI18N
         btnServiciosGuardar.setText("Guardar");
+        btnServiciosGuardar.addActionListener(this::btnServiciosGuardarActionPerformed);
 
         btnServiciosLimpiar.setFont(new java.awt.Font("Ubuntu Sans", 1, 18)); // NOI18N
         btnServiciosLimpiar.setText("Limpiar");
+        btnServiciosLimpiar.addActionListener(this::btnServiciosLimpiarActionPerformed);
 
         javax.swing.GroupLayout bgServiciosDerLayout = new javax.swing.GroupLayout(bgServiciosDer);
         bgServiciosDer.setLayout(bgServiciosDerLayout);
@@ -558,10 +560,8 @@ public class vista extends javax.swing.JFrame {
         btnMantenimientoLimpiar.setText("Limpiar");
 
         inputComboMantenimientoPlacaVehiculo.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
-        inputComboMantenimientoPlacaVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         inputComboMantenimientoIdServicio.setFont(new java.awt.Font("Ubuntu Sans", 1, 24)); // NOI18N
-        inputComboMantenimientoIdServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout bgMantenimientoIzqLayout = new javax.swing.GroupLayout(bgMantenimientoIzq);
         bgMantenimientoIzq.setLayout(bgMantenimientoIzqLayout);
@@ -793,6 +793,7 @@ public class vista extends javax.swing.JFrame {
 //              System.out.println(manipulador.pruebaDatosCliente(posicionClienteParalela));
 
                 inputComboVehiculoIdPropietario.addItem(clienteId);
+                JOptionPane.showMessageDialog(rootPane, "Cliente ingresado exitosamente");
             }
         }
     }//GEN-LAST:event_btnClienteGuardarActionPerformed
@@ -816,7 +817,7 @@ public class vista extends javax.swing.JFrame {
         } else{
         
         if (posicionVehiculoParalela >= tamVehiculoMaximo){
-            JOptionPane.showMessageDialog(rootPane, "no hay espacio disponible en el array vehiculo");
+            JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array vehiculo");
         } else {
             
             String vehiculoPlaca = inputVehiculoPlaca.getText();
@@ -850,6 +851,10 @@ public class vista extends javax.swing.JFrame {
             
             manipulador.setDatosVehiculos(posicionVehiculoParalela, vehiculoPlaca, vehiculoCilindraje, vehiculoMarca, vehiculoModelo, idPropietario);
             posicionVehiculoParalela++;
+            JOptionPane.showMessageDialog(rootPane, "Vehiculo ingresado correctamente");
+            
+            inputComboMantenimientoPlacaVehiculo.addItem(vehiculoPlaca);
+            
         }
         }
     }//GEN-LAST:event_btnVehiculoGuardarActionPerformed
@@ -862,6 +867,46 @@ public class vista extends javax.swing.JFrame {
         inputVehiculoMarca.setText("");
         inputVehiculoModelo.setText("");
     }//GEN-LAST:event_btnVehiculoLimpiarActionPerformed
+
+    int idServicio = 0;
+    int posicionServicioParalela = 0;
+    int tamServicioMaximo = servicios.getTamServicio();
+    
+    private void btnServiciosGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        
+        if (inputServiciosDescripcion.getText().isEmpty() || inputServiciosValor.getText().isEmpty()){
+            JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
+        } else{
+            if(posicionServicioParalela >= tamServicioMaximo){
+                JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array servicios");
+            }
+            else{
+                
+                outputServiciosId.setText(String.valueOf(idServicio));
+                String servicioDescripcion = inputServiciosDescripcion.getText();
+                int servicioValor = Integer.parseInt(inputServiciosValor.getText());
+                
+                manipulador.setDatosServicios(posicionServicioParalela, String.valueOf(idServicio), servicioDescripcion, servicioValor);
+                inputComboMantenimientoIdServicio.addItem(String.valueOf(idServicio));
+                
+                idServicio++;
+                posicionServicioParalela++;
+                
+                JOptionPane.showMessageDialog(rootPane, "Servicio ingresado correctamente");
+            }
+        }
+    }//GEN-LAST:event_btnServiciosGuardarActionPerformed
+
+    private void btnServiciosLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosLimpiarActionPerformed
+        // TODO add your handling code here:
+        
+//        outputServiciosId.setText("");
+        inputServiciosDescripcion.setText("");
+        inputServiciosValor.setText("");
+        
+    }//GEN-LAST:event_btnServiciosLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
