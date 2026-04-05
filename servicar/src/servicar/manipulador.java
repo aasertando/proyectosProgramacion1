@@ -6,6 +6,7 @@ package servicar;
 
 import java.io.ObjectInputStream;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,7 +63,7 @@ public class manipulador {
         return Arrays.toString(datos);
     }
     
-    //en una fecha dada a que vehiculos se les hizo mantenimiento
+    //1. en una fecha dada a que vehiculos se les hizo mantenimiento
     public String [] consultarPlacaMantenimiento(String fecha){
         
         String[] datos = new String[6];
@@ -93,26 +94,24 @@ public class manipulador {
         return datos;
     }
     
-    //Cuál es el costo total de mantenimientos en una fecha dada 
+    //2. Cuál es el costo total de mantenimientos en una fecha dada 
     public int consultarCostoMantenimiento (String fecha){
-        
-        String [] fechasConcordadas = new String [5];
-        int indexDeConcordadas = -1;
-        
+
+        int dinero = 0;
         for (int i = 0; i < mantenimiento.getTamMantenimiento(); i++){
-            if (mantenimiento.getFechaMantenimiento(i).equals(fecha)){
-                fechasConcordadas [indexDeConcordadas] = mantenimiento.getIdServicioMantenimiento(i);
-                        indexDeConcordadas++;
+            if (mantenimiento.getFechaMantenimiento(i) != null && mantenimiento.getFechaMantenimiento(i).equals(fecha)){
+                
+                String idServicio = mantenimiento.getIdServicioMantenimiento(i);
+                
+                for(int j = 0; j < servicios.getTamServicio(); j++){
+                    if(idServicio.equals(servicios.getIdServicio(j))){
+                        dinero += servicios.getValorServicio(j);
+//                        break;
+                    }
+                }
+                
             }
         }
-        
-        String [] idConcordados = new String [5];
-        int indexConcordados = -1;
-        for (int i = 0; i < fechasConcordadas.length; i++){
-            
-        }
-        
-        return 7;
+        return dinero;
     }
-    
 }

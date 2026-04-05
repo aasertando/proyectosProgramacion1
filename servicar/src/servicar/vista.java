@@ -684,6 +684,7 @@ public class vista extends javax.swing.JFrame {
         btnControl1.addActionListener(this::btnControl1ActionPerformed);
 
         btnControl2.setText("numero 2");
+        btnControl2.addActionListener(this::btnControl2ActionPerformed);
 
         btnControl3.setText("numero 3");
 
@@ -1009,6 +1010,14 @@ public class vista extends javax.swing.JFrame {
         modeloTabla.addRow(placas);
         
     }//GEN-LAST:event_btnControl1ActionPerformed
+
+    private void btnControl2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl2ActionPerformed
+        // TODO add your handling code here:
+        
+        String fecha = JOptionPane.showInputDialog("Ingrese fecha a la cual consultar dinero: ");
+        JOptionPane.showMessageDialog(rootPane, "El dinero total de la fecha dada es:   " + manipulador.consultarCostoMantenimiento(fecha));
+        
+    }//GEN-LAST:event_btnControl2ActionPerformed
 
     /**
      * @param args the command line arguments
