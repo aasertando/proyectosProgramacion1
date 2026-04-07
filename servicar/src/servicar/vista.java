@@ -4,6 +4,7 @@
  */
 package servicar;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -687,6 +688,7 @@ public class vista extends javax.swing.JFrame {
         btnControl2.addActionListener(this::btnControl2ActionPerformed);
 
         btnControl3.setText("numero 3");
+        btnControl3.addActionListener(this::btnControl3ActionPerformed);
 
         javax.swing.GroupLayout bgControlUp1Layout = new javax.swing.GroupLayout(bgControlUp1);
         bgControlUp1.setLayout(bgControlUp1Layout);
@@ -1001,16 +1003,21 @@ public class vista extends javax.swing.JFrame {
     //1. en una fecha dada a que vehiculos se les hizo mantenimiento
     private void btnControl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl1ActionPerformed
         // TODO add your handling code here:
+        modeloTabla.setRowCount(0);
 
         String fecha = JOptionPane.showInputDialog("Ingrese fecha para buscar");
-        String [] placas = manipulador.consultarPlacaMantenimiento(fecha);
+        String [] [] datos = manipulador.consultarPlacaMantenimiento(fecha);
         
-        String [] columnas1 = {"Fecha", "placa", "idPropietario", "Modelo", "Marca", "Cilindraje"};
+        String [] columnas1 = {"Fecha", "placa", "Modelo", "Cilindraje", "Marca"};
         modeloTabla.setColumnIdentifiers(columnas1);
-        modeloTabla.addRow(placas);
+
+        for (int i = 0; i < datos.length; i++) {
+            modeloTabla.addRow(datos[i]);
+        }
         
     }//GEN-LAST:event_btnControl1ActionPerformed
 
+    //2. Cuál es el costo total  de mantenimientos en una fecha dada 
     private void btnControl2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl2ActionPerformed
         // TODO add your handling code here:
         
@@ -1018,6 +1025,24 @@ public class vista extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "El dinero total de la fecha dada es:   " + manipulador.consultarCostoMantenimiento(fecha));
         
     }//GEN-LAST:event_btnControl2ActionPerformed
+
+    //3. Historial de mantenimientos de un vehículo 
+    private void btnControl3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnControl3ActionPerformed
+        // TODO add your handling code here:
+        modeloTabla.setRowCount(0);
+        
+        String placa = JOptionPane.showInputDialog("Ingrese placa a consultar historial de mantenimiento");
+//        System.out.println(Arrays.deepToString(manipulador.consultarHistorialMantenimiento(placa)));
+        String [] [] datos = manipulador.consultarHistorialMantenimiento(placa);
+        
+        String [] columnas3 = {"IDServicio", "Fecha", "Placa", "Descripción", "Valor"};
+        modeloTabla.setColumnIdentifiers(columnas3);
+        
+        for (int i = 0; i < datos.length; i++){
+            modeloTabla.addRow(datos [i]);
+        }
+        
+    }//GEN-LAST:event_btnControl3ActionPerformed
 
     /**
      * @param args the command line arguments
