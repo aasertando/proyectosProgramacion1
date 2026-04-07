@@ -45,6 +45,7 @@ public class vista extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         bgCliente = new javax.swing.JPanel();
         bgClienteIzq = new javax.swing.JPanel();
+        img1 = new javax.swing.JLabel();
         bgClienteDer = new javax.swing.JPanel();
         txt1 = new javax.swing.JLabel();
         inputClienteNombre = new javax.swing.JTextField();
@@ -80,8 +81,10 @@ public class vista extends javax.swing.JFrame {
         inputVehiculoCilindraje = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         bgVehiculoDer = new javax.swing.JPanel();
+        img2 = new javax.swing.JLabel();
         bgServicios = new javax.swing.JPanel();
         bgServiciosIzq = new javax.swing.JPanel();
+        img3 = new javax.swing.JLabel();
         bgServiciosDer = new javax.swing.JPanel();
         txt14 = new javax.swing.JLabel();
         outputServiciosId = new javax.swing.JTextField();
@@ -108,6 +111,7 @@ public class vista extends javax.swing.JFrame {
         inputComboMantenimientoPlacaVehiculo = new javax.swing.JComboBox<>();
         inputComboMantenimientoIdServicio = new javax.swing.JComboBox<>();
         bgMantenimientoDer = new javax.swing.JPanel();
+        img4 = new javax.swing.JLabel();
         bgControlServicar = new javax.swing.JPanel();
         bgControlCenter = new javax.swing.JPanel();
         bgControlUp1 = new javax.swing.JPanel();
@@ -122,15 +126,17 @@ public class vista extends javax.swing.JFrame {
 
         bgClienteIzq.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        img1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/servicar/images/informacion servicar 1.jpg"))); // NOI18N
+
         javax.swing.GroupLayout bgClienteIzqLayout = new javax.swing.GroupLayout(bgClienteIzq);
         bgClienteIzq.setLayout(bgClienteIzqLayout);
         bgClienteIzqLayout.setHorizontalGroup(
             bgClienteIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addComponent(img1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         bgClienteIzqLayout.setVerticalGroup(
             bgClienteIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(img1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         bgClienteDer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -184,7 +190,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgClienteDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputClienteNombre)
-                    .addComponent(txt2, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                    .addComponent(txt2, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                     .addComponent(inputClienteId)
                     .addGroup(bgClienteDerLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -194,9 +200,9 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(jSeparator3)
                             .addComponent(jSeparator4)))
                     .addComponent(inputClienteDireccion)
-                    .addComponent(txt3, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                    .addComponent(txt3, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                     .addComponent(inputClienteTelefono)
-                    .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                    .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                     .addGroup(bgClienteDerLayout.createSequentialGroup()
                         .addComponent(btnClienteGuardar)
                         .addGap(18, 18, 18)
@@ -235,7 +241,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgClienteDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClienteGuardar)
                     .addComponent(btnClienteLimpiar))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgClienteLayout = new javax.swing.GroupLayout(bgCliente);
@@ -318,12 +324,12 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgVehiculoIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputVehiculoPlaca)
-                    .addComponent(txt6, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt6, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addComponent(inputComboVehiculoIdPropietario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputVehiculoMarca)
-                    .addComponent(txt7, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt7, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addComponent(inputVehiculoModelo)
-                    .addComponent(txt8, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt8, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addGroup(bgVehiculoIzqLayout.createSequentialGroup()
                         .addComponent(btnVehiculoGuardar)
                         .addGap(18, 18, 18)
@@ -337,7 +343,7 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(jSeparator7)
                             .addComponent(jSeparator8)
                             .addComponent(jSeparator9)))
-                    .addComponent(txt9, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt9, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addComponent(inputVehiculoCilindraje))
                 .addContainerGap())
         );
@@ -383,15 +389,17 @@ public class vista extends javax.swing.JFrame {
 
         bgVehiculoDer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        img2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/servicar/images/informacion servicar 2.jpg"))); // NOI18N
+
         javax.swing.GroupLayout bgVehiculoDerLayout = new javax.swing.GroupLayout(bgVehiculoDer);
         bgVehiculoDer.setLayout(bgVehiculoDerLayout);
         bgVehiculoDerLayout.setHorizontalGroup(
             bgVehiculoDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addComponent(img2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         bgVehiculoDerLayout.setVerticalGroup(
             bgVehiculoDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(img2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bgVehiculoLayout = new javax.swing.GroupLayout(bgVehiculo);
@@ -418,15 +426,17 @@ public class vista extends javax.swing.JFrame {
 
         bgServiciosIzq.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        img3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/servicar/images/informacion servicar 3.jpg"))); // NOI18N
+
         javax.swing.GroupLayout bgServiciosIzqLayout = new javax.swing.GroupLayout(bgServiciosIzq);
         bgServiciosIzq.setLayout(bgServiciosIzqLayout);
         bgServiciosIzqLayout.setHorizontalGroup(
             bgServiciosIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addComponent(img3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         bgServiciosIzqLayout.setVerticalGroup(
             bgServiciosIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(img3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         bgServiciosDer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -472,7 +482,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgServiciosDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(outputServiciosId)
-                    .addComponent(txt15, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt15, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addComponent(inputServiciosDescripcion)
                     .addGroup(bgServiciosDerLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -481,7 +491,7 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(jSeparator15)
                             .addComponent(jSeparator16)))
                     .addComponent(inputServiciosValor)
-                    .addComponent(txt16, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt16, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addGroup(bgServiciosDerLayout.createSequentialGroup()
                         .addComponent(btnServiciosGuardar)
                         .addGap(18, 18, 18)
@@ -514,7 +524,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgServiciosDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnServiciosGuardar)
                     .addComponent(btnServiciosLimpiar))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgServiciosLayout = new javax.swing.GroupLayout(bgServicios);
@@ -623,7 +633,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgMantenimientoIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMantenimientoGuardar)
                     .addComponent(btnMantenimientoLimpiar))
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(bgMantenimientoIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(bgMantenimientoIzqLayout.createSequentialGroup()
                     .addGap(152, 152, 152)
@@ -633,15 +643,17 @@ public class vista extends javax.swing.JFrame {
 
         bgMantenimientoDer.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        img4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/servicar/images/informacion servicar 4.jpg"))); // NOI18N
+
         javax.swing.GroupLayout bgMantenimientoDerLayout = new javax.swing.GroupLayout(bgMantenimientoDer);
         bgMantenimientoDer.setLayout(bgMantenimientoDerLayout);
         bgMantenimientoDerLayout.setHorizontalGroup(
             bgMantenimientoDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addComponent(img4, javax.swing.GroupLayout.PREFERRED_SIZE, 456, Short.MAX_VALUE)
         );
         bgMantenimientoDerLayout.setVerticalGroup(
             bgMantenimientoDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(img4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout bgMantenimientoLayout = new javax.swing.GroupLayout(bgMantenimiento);
@@ -717,7 +729,7 @@ public class vista extends javax.swing.JFrame {
                     .addComponent(btnControl1)
                     .addComponent(btnControl2)
                     .addComponent(btnControl3))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgControlCenterLayout = new javax.swing.GroupLayout(bgControlCenter);
@@ -1143,6 +1155,10 @@ public class vista extends javax.swing.JFrame {
     private javax.swing.JButton btnServiciosLimpiar;
     private javax.swing.JButton btnVehiculoGuardar;
     private javax.swing.JButton btnVehiculoLimpiar;
+    private javax.swing.JLabel img1;
+    private javax.swing.JLabel img2;
+    private javax.swing.JLabel img3;
+    private javax.swing.JLabel img4;
     private javax.swing.JTextField inputClienteDireccion;
     private javax.swing.JTextField inputClienteId;
     private javax.swing.JTextField inputClienteNombre;
