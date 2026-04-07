@@ -126,7 +126,7 @@ public class vista extends javax.swing.JFrame {
         bgClienteIzq.setLayout(bgClienteIzqLayout);
         bgClienteIzqLayout.setHorizontalGroup(
             bgClienteIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
         bgClienteIzqLayout.setVerticalGroup(
             bgClienteIzqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +184,7 @@ public class vista extends javax.swing.JFrame {
                 .addGroup(bgClienteDerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(inputClienteNombre)
-                    .addComponent(txt2, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt2, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addComponent(inputClienteId)
                     .addGroup(bgClienteDerLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -194,9 +194,9 @@ public class vista extends javax.swing.JFrame {
                             .addComponent(jSeparator3)
                             .addComponent(jSeparator4)))
                     .addComponent(inputClienteDireccion)
-                    .addComponent(txt3, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt3, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addComponent(inputClienteTelefono)
-                    .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                    .addComponent(txt4, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addGroup(bgClienteDerLayout.createSequentialGroup()
                         .addComponent(btnClienteGuardar)
                         .addGap(18, 18, 18)
@@ -245,7 +245,7 @@ public class vista extends javax.swing.JFrame {
             .addGroup(bgClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bgClienteIzq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bgClienteDer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -254,8 +254,8 @@ public class vista extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bgClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bgClienteDer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bgClienteIzq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bgClienteIzq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bgClienteDer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -408,7 +408,7 @@ public class vista extends javax.swing.JFrame {
         bgVehiculoLayout.setVerticalGroup(
             bgVehiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bgVehiculoIzq, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgVehiculoLayout.createSequentialGroup()
+            .addGroup(bgVehiculoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bgVehiculoDer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1058,6 +1058,27 @@ public class vista extends javax.swing.JFrame {
         
         String placa = JOptionPane.showInputDialog("Ingrese placa a consultar historial de mantenimiento");
 //        System.out.println(Arrays.deepToString(manipulador.consultarHistorialMantenimiento(placa)));
+
+        //si presiona cancelar
+        if (placa == null || placa.trim().isEmpty()) {
+            return;
+        }
+        
+        boolean encontrado = false;
+        for (int i = 0; i < 5; i++){
+            
+            if (manipulador.getPlacaVehiculo(i) != null && manipulador.getPlacaVehiculo(i).equals(placa)){
+                encontrado = true;
+//                JOptionPane.showMessageDialog(rootPane, "Esta placa no existe en el sistema");
+                break;
+            }
+        }
+        
+        if (!encontrado){
+            JOptionPane.showMessageDialog(rootPane, "Esta placa no existe en el sistema");
+            return;
+        }
+
         String [] [] datos = manipulador.consultarHistorialMantenimiento(placa);
         
         String [] columnas3 = {"IDServicio", "Fecha", "Placa", "Descripción", "Valor"};
