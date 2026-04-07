@@ -784,27 +784,40 @@ public class vista extends javax.swing.JFrame {
     
     private void btnClienteGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteGuardarActionPerformed
         // TODO add your handling code here:
-        
-        if (inputClienteNombre.getText().isEmpty() || inputClienteId.getText().isEmpty() || inputClienteDireccion.getText().isEmpty() || inputClienteTelefono.getText().isEmpty()){
+            if (inputClienteNombre.getText().isEmpty() ||inputClienteId.getText().isEmpty() ||inputClienteDireccion.getText().isEmpty() || inputClienteTelefono.getText().isEmpty()){
                 JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
-        } else{
-            if (posicionClienteParalela >= tamClienteMaximo){
-                JOptionPane.showMessageDialog(rootPane, "no hay espacio disponible en el array cliente");
             } else{
-            
-                String clienteNombre = inputClienteNombre.getText();
-                String clienteId = inputClienteId.getText();
-                String clienteDireccion = inputClienteDireccion.getText();
-                String clienteTelefono = inputClienteTelefono.getText();
-        
-                manipulador.setDatosClientes(posicionClienteParalela, clienteId, clienteNombre, clienteDireccion, clienteTelefono);
-                posicionClienteParalela ++;
-        
-//              System.out.println("posicion cliente actual: " + posicionClienteParalela);
-//              System.out.println(manipulador.pruebaDatosCliente(posicionClienteParalela));
 
-                inputComboVehiculoIdPropietario.addItem(clienteId);
-                JOptionPane.showMessageDialog(rootPane, "Cliente ingresado exitosamente");
+            String clienteId = inputClienteId.getText().trim();
+
+            //para validar el id repetido
+            boolean existe = false;
+
+            for (int i = 0; i < posicionClienteParalela; i++){
+                if (manipulador.getIdCliente(i) != null && manipulador.getIdCliente(i).equals(clienteId)){
+                    existe = true;
+                    break;
+                }
+            }
+
+            if (existe){
+                JOptionPane.showMessageDialog(rootPane, "Ese ID ya existe");
+            } else{
+
+                if (posicionClienteParalela >= tamClienteMaximo){
+                    JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array cliente");
+                } else{
+        
+                    String clienteNombre = inputClienteNombre.getText();
+                    String clienteDireccion = inputClienteDireccion.getText();
+                    String clienteTelefono = inputClienteTelefono.getText();
+
+                    manipulador.setDatosClientes(posicionClienteParalela, clienteId, clienteNombre, clienteDireccion, clienteTelefono);
+                    posicionClienteParalela ++;
+            
+                    inputComboVehiculoIdPropietario.addItem(clienteId);
+                    JOptionPane.showMessageDialog(rootPane, "Cliente ingresado exitosamente");
+                }
             }
         }
     }//GEN-LAST:event_btnClienteGuardarActionPerformed
@@ -824,51 +837,63 @@ public class vista extends javax.swing.JFrame {
     private void btnVehiculoGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoGuardarActionPerformed
         // TODO add your handling code here:
         
-        if (inputVehiculoPlaca.getText().isEmpty() || inputVehiculoCilindraje.getText().isEmpty() || inputVehiculoMarca.getText().isEmpty() || inputVehiculoModelo.getText().isEmpty() || inputComboVehiculoIdPropietario.getSelectedIndex() == -1){
-                JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
-        } else{
+        String vehiculoPlaca = inputVehiculoPlaca.getText().trim();
+
+        // 🔥para validar la placa repetida
+        boolean existe = false;
+
+        for (int i = 0; i < posicionVehiculoParalela; i++){
+            if (manipulador.getPlacaVehiculo(i) != null && manipulador.getPlacaVehiculo(i).equals(vehiculoPlaca)){
         
-        if (posicionVehiculoParalela >= tamVehiculoMaximo){
-            JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array vehiculo");
-        } else {
-            
-            String vehiculoPlaca = inputVehiculoPlaca.getText();
-            String vehiculoCilindraje = inputVehiculoCilindraje.getText();
-            String vehiculoMarca = inputVehiculoMarca.getText();
-            String vehiculoModelo = inputVehiculoModelo.getText();
-            
-            int indexIdPropietario = inputComboVehiculoIdPropietario.getSelectedIndex();
-            String idPropietario;
-            
-            switch (indexIdPropietario) {
-                case 0:
-                    idPropietario = manipulador.getIdCliente(0);
-                    break;
-                case 1:
-                    idPropietario = manipulador.getIdCliente(1);
-                    break;
-                case 2:
-                    idPropietario = manipulador.getIdCliente(2);
-                    break;
-                case 3:
-                    idPropietario = manipulador.getIdCliente(3);
-                    break;
-                case 4:
-                    idPropietario = manipulador.getIdCliente(4);
-                    break;
-                default:
-                    idPropietario = "";
-                    break;
+                existe = true;
+                break;
             }
-            
-            manipulador.setDatosVehiculos(posicionVehiculoParalela, vehiculoPlaca, vehiculoCilindraje, vehiculoMarca, vehiculoModelo, idPropietario);
-            posicionVehiculoParalela++;
-            JOptionPane.showMessageDialog(rootPane, "Vehiculo ingresado correctamente");
-            
-            inputComboMantenimientoPlacaVehiculo.addItem(vehiculoPlaca);
-            
         }
+
+        if (existe){
+            JOptionPane.showMessageDialog(rootPane, "Esa placa ya existe");
+        } else{
+
+            if (posicionVehiculoParalela >= tamVehiculoMaximo){
+                JOptionPane.showMessageDialog(rootPane, "No hay espacio disponible en el array vehiculo");
+            } else {
+        
+                String vehiculoCilindraje = inputVehiculoCilindraje.getText();
+                String vehiculoMarca = inputVehiculoMarca.getText();
+                String vehiculoModelo = inputVehiculoModelo.getText();
+
+                int indexIdPropietario = inputComboVehiculoIdPropietario.getSelectedIndex();
+                String idPropietario;
+
+                switch (indexIdPropietario) {
+                    case 0:
+                        idPropietario = manipulador.getIdCliente(0);
+                        break;
+                    case 1:
+                        idPropietario = manipulador.getIdCliente(1);
+                        break;
+                    case 2:
+                        idPropietario = manipulador.getIdCliente(2);
+                        break;
+                    case 3:
+                        idPropietario = manipulador.getIdCliente(3);
+                        break;
+                    case 4:
+                        idPropietario = manipulador.getIdCliente(4);
+                        break;
+                    default:
+                        idPropietario = "";
+                        break;
+                }
+
+                manipulador.setDatosVehiculos(posicionVehiculoParalela, vehiculoPlaca, vehiculoCilindraje, vehiculoMarca, vehiculoModelo, idPropietario);
+                posicionVehiculoParalela++;
+        
+                JOptionPane.showMessageDialog(rootPane, "Vehiculo ingresado correctamente");
+                inputComboMantenimientoPlacaVehiculo.addItem(vehiculoPlaca);
+            }
         }
+
     }//GEN-LAST:event_btnVehiculoGuardarActionPerformed
 
     private void btnVehiculoLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoLimpiarActionPerformed

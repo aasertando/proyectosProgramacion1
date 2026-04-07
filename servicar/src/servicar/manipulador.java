@@ -158,7 +158,7 @@ int contador = 0;
     public String[] [] consultarHistorialMantenimiento(String placa){
         
         int contador = 0;
-            // 🔹contar cuantas coincidencias de placas hay, (para saber cuantas mandar)
+        // 🔹contar cuantas coincidencias de placas hay, (para saber cuantas mandar al array grande)
         for (int i = 0; i < mantenimiento.getTamMantenimiento(); i++){
             if (mantenimiento.getPlacaMantenimiento(i) != null && mantenimiento.getPlacaMantenimiento(i).equals(placa)){
                 contador++;
